@@ -1,5 +1,6 @@
 plugins {
     id 'java'
+    id 'com.github.johnrengelman.shadow' version '7.1.2'
 }
 
 group = 'me.gaminglounge'
@@ -19,6 +20,7 @@ repositories {
 
 dependencies {
     compileOnly "io.papermc.paper:paper-api:1.20.4-R0.1-SNAPSHOT"
+    implementation "dev.jorel:commandapi-bukkit-shade:9.3.0"
 }
 
 def targetJavaVersion = 17
@@ -46,4 +48,10 @@ processResources {
     filesMatching('paper-plugin.yml') {
         expand props
     }
+}
+
+shadowJar {
+    archiveBaseName.set('keyshop')
+    archiveClassifier.set('')
+    relocate("dev.jorel.commandapi", "me.gaminglounge.keyshop.commandapi")
 }
