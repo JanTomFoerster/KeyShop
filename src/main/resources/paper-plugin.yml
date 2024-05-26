@@ -1,0 +1,4 @@
+name: KeyShop
+version: '${version}'
+main: me.gaminglounge.keyshop.KeyShop
+api-version: '1.20'
