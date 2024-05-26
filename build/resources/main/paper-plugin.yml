@@ -1,0 +1,4 @@
+name: KeyShop
+version: '1.0'
+main: me.gaminglounge.keyshop.KeyShop
+api-version: '1.20'
