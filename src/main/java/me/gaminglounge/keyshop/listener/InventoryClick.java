@@ -1,6 +1,10 @@
 package me.gaminglounge.keyshop.listener;
 
+import me.gaminglounge.keyshop.utility.KeyFragments;
+import net.kyori.adventure.text.minimessage.MiniMessage;
+import org.bukkit.Bukkit;
 import org.bukkit.NamespacedKey;
+import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
@@ -9,12 +13,15 @@ import org.bukkit.persistence.PersistentDataType;
 public class InventoryClick implements Listener {
 
     public static final NamespacedKey isInventoryClickEvent = new NamespacedKey("keyshop", "is_inventory_click_event");
+    KeyFragments key = new KeyFragments();
+    MiniMessage mm = MiniMessage.miniMessage();
 
     @EventHandler
     public void onClick(InventoryClickEvent e) {
         if (e.getCurrentItem() == null || e.getCurrentItem().getItemMeta() == null) return;
         if (!e.getCurrentItem().getItemMeta().getPersistentDataContainer().has(isInventoryClickEvent,
                 PersistentDataType.INTEGER)) return;
+        Player p = (Player) e.getWhoClicked();
         switch (e.getCurrentItem().getItemMeta().getPersistentDataContainer().
                 get(isInventoryClickEvent, PersistentDataType.INTEGER)) {
             default:
