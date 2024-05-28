@@ -26,6 +26,42 @@ public class InventoryClick implements Listener {
                 e.setCancelled(true);
                 e.getWhoClicked().closeInventory();
                 break;
+            case 2:
+                e.setCancelled(true);
+                if (key.getKeyFragments(p) < 2) {
+                    p.sendMessage(mm.deserialize("<red>Du hast leider nicht genug " +
+                            "<aqua>Schlüssel<gray>-<aqua>Fragmente<red>, bitte gehe zur <gold>Gilde " +
+                            "<red>um mehr zu bekommen."));
+                    break;
+                }
+                key.subtractKeyFragments(p, 2);
+                String claim_command = "loot give " + p.displayName() + " 549";
+                Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), claim_command);
+                break;
+            case 3:
+                e.setCancelled(true);
+                if (key.getKeyFragments(p) < 4) {
+                    p.sendMessage(mm.deserialize("<red>Du hast leider nicht genug " +
+                            "<aqua>Schlüssel<gray>-<aqua>Fragmente<red>, bitte gehe zur <gold>Gilde " +
+                            "<red>um mehr zu bekommen."));
+                    break;
+                }
+                key.subtractKeyFragments(p, 4);
+                String resource_command = "loot give " + p.displayName() + " 129";
+                Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), resource_command);
+                break;
+            case 4:
+                e.setCancelled(true);
+                if (key.getKeyFragments(p) < 6) {
+                    p.sendMessage(mm.deserialize("<red>Du hast leider nicht genug " +
+                            "<aqua>Schlüssel<gray>-<aqua>Fragmente<red>, bitte gehe zur <gold>Gilde " +
+                            "<red>um mehr zu bekommen."));
+                    break;
+                }
+                key.subtractKeyFragments(p, 6);
+                String spezial_command = "loot give " + p.displayName() + " 720";
+                Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), spezial_command);
+                break;
         }
     }
 

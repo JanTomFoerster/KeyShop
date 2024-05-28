@@ -3,6 +3,7 @@ package me.gaminglounge.keyshop.gui;
 import me.gaminglounge.keyshop.commands.GiveKeyFragments;
 import me.gaminglounge.keyshop.utility.ItemCreator;
 import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.format.TextDecoration;
 import net.kyori.adventure.text.minimessage.MiniMessage;
 import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
 import org.bukkit.Bukkit;
@@ -24,7 +25,7 @@ public class MainGUI implements InventoryHolder{
 
     public MainGUI(Player p) {
         if (p == null) return;
-        this.mainGUI = Bukkit.createInventory(this, (5 * 9), Component.text("Nexus"));
+        this.mainGUI = Bukkit.createInventory(this, (5 * 9), Component.text("Key-Shop"));
 
         int[] placeholder = {0,1,2,3,5,6,7,8,9,17,18,26,27,35,36,37,38,39,41,42,43,44};
         for (int a : placeholder) {
@@ -40,14 +41,40 @@ public class MainGUI implements InventoryHolder{
             keyShards = 0;
         }
         List<Component> lore = new ArrayList<>();
-        lore.add(mm.deserialize("<aqua>Schlüssel<gray>-<aqua>Fragmente<gray>: <red><bold><count>",
-                Placeholder.component("count", Component.text(keyShards))));
+        lore.add(mm.deserialize("<reset><aqua>Schlüssel<gray>-<aqua>Fragmente<gray>: <red><bold><count>",
+                Placeholder.component("count", Component.text(keyShards)))
+                .decoration(TextDecoration.ITALIC, false));
 
+        List<Component> lore_claim = new ArrayList<>();
+        lore_claim.add(mm.deserialize("<reset><gold>2 <aqua>Schlüssel<gray>-<aqua>Fragmente")
+                .decoration(TextDecoration.ITALIC, false));
+
+        List<Component> lore_resource = new ArrayList<>();
+        lore_resource.add(mm.deserialize("<reset><gold>4 <aqua>Schlüssel<gray>-<aqua>Fragmente")
+                .decoration(TextDecoration.ITALIC, false));
+
+        List<Component> lore_spezial = new ArrayList<>();
+        lore_spezial.add(mm.deserialize("<reset><gold>6 <aqua>Schlüssel<gray>-<aqua>Fragmente")
+                .decoration(TextDecoration.ITALIC, false));
 
         mainGUI.setItem(4, itemCreator.playerhead(p, 0, lore));
 
         mainGUI.setItem(40, itemCreator.createItem(Material.BARRIER, 1, false,
-                mm.deserialize("<red>Schließen")));
+                mm.deserialize("<reset><red>Schließen")
+                        .decoration(TextDecoration.ITALIC, false)));
+
+        mainGUI.setItem(20, itemCreator.createItem(Material.GREEN_CONCRETE_POWDER,2, true,
+                mm.deserialize("<reset><dark_green>Claim <gray>- <gold>Schlüssel")
+                        .decoration(TextDecoration.ITALIC, false),lore_claim));
+
+        mainGUI.setItem(22, itemCreator.createItem(Material.BRICKS,3, true,
+                mm.deserialize("<reset><aqua>Resource <gray>- <gold>Schlüssel")
+                        .decoration(TextDecoration.ITALIC, false),lore_resource));
+
+        mainGUI.setItem(24, itemCreator.createItem(Material.MAGMA_BLOCK,4, true,
+                mm.deserialize("<reset><red>Spezial <gray>- <gold>Schlüssel")
+                        .decoration(TextDecoration.ITALIC, false),lore_spezial));
+
     }
 
     @Override
