@@ -42,7 +42,7 @@ public class InventoryClick implements Listener {
                     break;
                 }
                 key.subtractKeyFragments(p, 2);
-                String claim_command = "loot give " + p.displayName() + " 549";
+                String claim_command = "loot give " + p.displayName() + " 549 1";
                 Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), claim_command);
                 break;
             case 3:
@@ -54,7 +54,7 @@ public class InventoryClick implements Listener {
                     break;
                 }
                 key.subtractKeyFragments(p, 4);
-                String resource_command = "loot give " + p.displayName() + " 129";
+                String resource_command = "loot give " + p.displayName() + " 129 1";
                 Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), resource_command);
                 break;
             case 4:
@@ -66,7 +66,7 @@ public class InventoryClick implements Listener {
                     break;
                 }
                 key.subtractKeyFragments(p, 6);
-                String spezial_command = "loot give " + p.displayName() + " 720";
+                String spezial_command = "loot give " + p.displayName() + " 702 1";
                 Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), spezial_command);
                 break;
         }
