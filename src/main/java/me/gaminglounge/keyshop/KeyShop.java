@@ -25,7 +25,7 @@ public final class KeyShop extends JavaPlugin {
 
         this.logger = this.getLogger();
 
-        CommandAPI.onLoad(new CommandAPIBukkitConfig(this));
+        if (!CommandAPI.isLoaded()) CommandAPI.onLoad(new CommandAPIBukkitConfig(this));
         new GiveKeyFragments();
         new OpenMainGui();
     }
