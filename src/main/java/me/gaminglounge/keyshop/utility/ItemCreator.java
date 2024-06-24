@@ -1,6 +1,7 @@
 package me.gaminglounge.keyshop.utility;
 
-import net.kyori.adventure.text.Component;
+import java.util.List;
+
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
@@ -9,8 +10,9 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.SkullMeta;
 import org.bukkit.persistence.PersistentDataType;
+
 import me.gaminglounge.keyshop.listener.InventoryClick;
-import java.util.List;
+import net.kyori.adventure.text.Component;
 
 public class ItemCreator {
 
@@ -28,10 +30,9 @@ public class ItemCreator {
         meta.displayName(displayName);
         meta.lore(lore);
         if (glint) {
-            meta.addEnchant(Enchantment.DURABILITY, 10, true);
+            meta.addEnchant(Enchantment.UNBREAKING, 10, true);
             meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
         }
-        meta.addItemFlags(ItemFlag.HIDE_ITEM_SPECIFICS);
         meta.addItemFlags(ItemFlag.HIDE_ARMOR_TRIM);
         meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
         meta.addItemFlags(ItemFlag.HIDE_DESTROYS);
@@ -48,10 +49,9 @@ public class ItemCreator {
         ItemMeta meta = item.getItemMeta();
         meta.displayName(displayName);
         if (glint) {
-            meta.addEnchant(Enchantment.DURABILITY, 10, true);
+            meta.addEnchant(Enchantment.UNBREAKING, 10, true);
             meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
         }
-        meta.addItemFlags(ItemFlag.HIDE_ITEM_SPECIFICS);
         meta.addItemFlags(ItemFlag.HIDE_ARMOR_TRIM);
         meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
         meta.addItemFlags(ItemFlag.HIDE_DESTROYS);
@@ -67,10 +67,9 @@ public class ItemCreator {
         ItemStack item = new ItemStack(material);
         ItemMeta meta = item.getItemMeta();
         if (glint) {
-            meta.addEnchant(Enchantment.DURABILITY, 10, true);
+            meta.addEnchant(Enchantment.UNBREAKING, 10, true);
             meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
         }
-        meta.addItemFlags(ItemFlag.HIDE_ITEM_SPECIFICS);
         meta.addItemFlags(ItemFlag.HIDE_ARMOR_TRIM);
         meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
         meta.addItemFlags(ItemFlag.HIDE_DESTROYS);
@@ -84,7 +83,6 @@ public class ItemCreator {
     public ItemStack createItem(Material material, int persistentDataIsClickedID) {
         ItemStack item = new ItemStack(material);
         ItemMeta meta = item.getItemMeta();
-        meta.addItemFlags(ItemFlag.HIDE_ITEM_SPECIFICS);
         meta.addItemFlags(ItemFlag.HIDE_ARMOR_TRIM);
         meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
         meta.addItemFlags(ItemFlag.HIDE_DESTROYS);
@@ -99,7 +97,6 @@ public class ItemCreator {
     public ItemStack createItem(Material material) {
         ItemStack item = new ItemStack(material);
         ItemMeta meta = item.getItemMeta();
-        meta.addItemFlags(ItemFlag.HIDE_ITEM_SPECIFICS);
         meta.addItemFlags(ItemFlag.HIDE_ARMOR_TRIM);
         meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
         meta.addItemFlags(ItemFlag.HIDE_DESTROYS);
